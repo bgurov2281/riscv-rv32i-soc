@@ -122,10 +122,10 @@ Waveforms were captured in **GTKWave** to validate pipeline behavior, control fl
 - Instruction-level bring-up tests written in C
 - UART output used as primary correctness signal
 - Directed tests for:
-- - ALU ops
-- - Load/store behavior
-- - Branch correctness
-- - MUL stall behavior
+  - ALU ops
+  - Load/store behavior
+  - Branch correctness
+  - MUL stall behavior
 - GTKWave used to inspect pipline state, flush behavior, and stalls
 
 ### 🎨 Waveform Color Legend
