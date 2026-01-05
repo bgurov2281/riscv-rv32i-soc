@@ -21,3 +21,12 @@ and a memory-mapped UART for C bring-up.
 ## Run
 ```bash
 make sim
+
+
+<p align="center">
+    <img src="images/pipeline_flow.png" width="900">
+</p>
+
+<p align="center">
+    <em>Figure 1 - 2-stage pipeline execution showing fetch, execute, and writeback.</em>
+</p>
