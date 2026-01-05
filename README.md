@@ -203,7 +203,7 @@ make wave
 ```
 ---
 
-### ✅ Example Firmware Output
+## ✅ Example Firmware Output
 ```
 RV32I bring-up tests
 add: PASS
