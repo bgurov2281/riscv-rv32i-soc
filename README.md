@@ -156,7 +156,7 @@ Waveforms were captured in **GTKWave** to validate pipeline behavior, control fl
 
 ---
 
-## Build & Run
+## ▶️ Build & Run
 
 ### Requirements
 - `riscv64-unknown-elf-gcc`
@@ -173,7 +173,7 @@ make sim
 make wave
 ```
 
-## Edample Firmware Output
+## ✅ Example Firmware Output
 ```
 RV32I bring-up tests
 add: PASS
@@ -192,7 +192,7 @@ DONE
 ```
 ---
 
-## Future Work
+## 🔜 Future Work
 - Forwarding unit
 - Timer MMIO
 - Interrupt support
