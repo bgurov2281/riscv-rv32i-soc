@@ -47,6 +47,16 @@ static void test_mul_neg(void){
     else uart_puts("FAIL\n");
 }
 
+static void test_mul_stall(void){
+    uart_puts("mulstall: ");
+    volatile int a = 3, b = 5, c = 7;
+    volatile int x = a * b; // 15
+    volatile int y = b * c; // 35
+    volatile int z = x + y; // 50
+    if (z == 50) uart_puts("PASS\n");
+    else uart_puts("FAIL\n");
+}
+
 int main(void)  {
     uart_puts ("RV32I bring-up tests\n");
 
@@ -70,6 +80,7 @@ int main(void)  {
 
     test_mul();
     test_mul_neg();
+    test_mul_stall();
 
     uart_puts("DONE\n");
     while (1) {}
