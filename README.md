@@ -11,6 +11,7 @@ and a memory-mapped UART for C bring-up.
 - Bare-metal C toolchain (`riscv64-unknown-elf-gcc`)
 - Verilator simulation
 - Automated bring-up tests (ALU + load/store)
+- Implemented 2-stage pipelined RV32I core and exteded ISA with multi-cycle MUL unit featuring pipeline stall/busy control; verified via bare-metal C tests over UART MMIO in Verilator.
 
 ## Memory Map
 | Region | Address Range |
