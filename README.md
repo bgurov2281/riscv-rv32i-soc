@@ -7,6 +7,10 @@ This project was built to demonstrate **RTL design, pipeline control, multi-cycl
 
 ---
 
+## 🔍 Project Summary
+
+This project implements a custom RV32IM RISC-V CPU in synthesizable Verilog with a 2-stage in-order pipeline. Control flow is resolved in the execute stage with correct pipeline flush, and RV32M MUL instructions are supported via a multi-cycle unit that stalls the pipeline. The CPU is integrated into a minimal SoC with byte-addressable RAM and a memory-mapped UART, capable of running bare-metal C programs comiled with riscv64-unknwon-elf-gcc. Correctness is verified using Verilator simulation and GTKWave waveforms.
+
 ## ✨ Features
 
 - **Custom RV32IM CPU core**
@@ -51,6 +55,32 @@ This project was built to demonstrate **RTL design, pipeline control, multi-cycl
 
 ---
 
+## 📋 Design Notes
+
+### Pipeline
+- 2-stage in-order pipeline: IF and EX/WB
+- Instruction fetch overlaps with execute
+- Control-flow resolved in EX stage
+- Wrong-path instructions are squashed via NOP insertion
+
+### Memory Model
+- Instruction memory is read-only
+- Data memory uses combinational reads for single-cycle loads
+- Byte strobes implemented for SB/SH/SW
+- MMIO accesses share the data bus
+
+### MUL Implementation (RV32M)
+- Fixed-latency multi-cycle MUL (4 cycles)
+- Pipeline stalls during MUL execution
+- Result written back upon completion
+
+### Known Limitations
+- No forwarding unit
+- No interrupts or exceptions
+- UART is TX-only
+
+---
+
 ## 🗂️ Repository Structure
 
     riscv-soc/
@@ -87,6 +117,16 @@ This project was built to demonstrate **RTL design, pipeline control, multi-cycl
 
 The design is verified using **Verilator** with real RISC-V firmware.  
 Waveforms were captured in **GTKWave** to validate pipeline behavior, control flow, and multi-cycle execution.
+
+### Verification Strategy
+- Instruction-level bring-up tests written in C
+- UART output used as primary correctness signal
+- Directed tests for:
+- - ALU ops
+- - Load/store behavior
+- - Branch correctness
+- - MUL stall behavior
+- GTKWave used to inspect pipline state, flush behavior, and stalls
 
 ### 🎨 Waveform Color Legend
 
